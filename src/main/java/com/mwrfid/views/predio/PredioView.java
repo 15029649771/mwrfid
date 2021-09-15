@@ -60,7 +60,7 @@ public class PredioView extends Div implements BeforeEnterObserver {
 
     private BeanValidationBinder<Predio> binder;
 
-    private Predio predio;
+    private Predio prediox;
 
     private PredioService predioService;
 
@@ -123,12 +123,12 @@ public class PredioView extends Div implements BeforeEnterObserver {
 
         save.addClickListener(e -> {
             try {
-                if (this.predio == null) {
-                    this.predio = new Predio();
+                if (this.prediox == null) {
+                    this.prediox = new Predio();
                 }
-                binder.writeBean(this.predio);
+                binder.writeBean(this.prediox);
 
-                predioService.update(this.predio);
+                predioService.update(this.prediox);
                 clearForm();
                 refreshGrid();
                 Notification.show("Predio details stored.");
@@ -221,8 +221,8 @@ public class PredioView extends Div implements BeforeEnterObserver {
     }
 
     private void populateForm(Predio value) {
-        this.predio = value;
-        binder.readBean(this.predio);
+        this.prediox = value;
+        binder.readBean(this.prediox);
 
     }
 }

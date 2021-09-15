@@ -59,7 +59,7 @@ public class DispositivoView extends Div implements BeforeEnterObserver {
 
     private BeanValidationBinder<Dispositivo> binder;
 
-    private Dispositivo dispositivo;
+    private Dispositivo dispositivox;
 
     private DispositivoService dispositivoService;
 
@@ -121,12 +121,12 @@ public class DispositivoView extends Div implements BeforeEnterObserver {
 
         save.addClickListener(e -> {
             try {
-                if (this.dispositivo == null) {
-                    this.dispositivo = new Dispositivo();
+                if (this.dispositivox == null) {
+                    this.dispositivox = new Dispositivo();
                 }
-                binder.writeBean(this.dispositivo);
+                binder.writeBean(this.dispositivox);
 
-                dispositivoService.update(this.dispositivo);
+                dispositivoService.update(this.dispositivox);
                 clearForm();
                 refreshGrid();
                 Notification.show("Dispositivo details stored.");
@@ -219,8 +219,8 @@ public class DispositivoView extends Div implements BeforeEnterObserver {
     }
 
     private void populateForm(Dispositivo value) {
-        this.dispositivo = value;
-        binder.readBean(this.dispositivo);
+        this.dispositivox = value;
+        binder.readBean(this.dispositivox);
 
     }
 }

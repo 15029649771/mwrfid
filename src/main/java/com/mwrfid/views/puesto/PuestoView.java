@@ -62,7 +62,7 @@ public class PuestoView extends Div implements BeforeEnterObserver {
 
     private BeanValidationBinder<Puesto> binder;
 
-    private Puesto puesto;
+    private Puesto puestox;
 
     private PuestoService puestoService;
 
@@ -132,12 +132,12 @@ public class PuestoView extends Div implements BeforeEnterObserver {
 
         save.addClickListener(e -> {
             try {
-                if (this.puesto == null) {
-                    this.puesto = new Puesto();
+                if (this.puestox == null) {
+                    this.puestox = new Puesto();
                 }
-                binder.writeBean(this.puesto);
+                binder.writeBean(this.puestox);
 
-                puestoService.update(this.puesto);
+                puestoService.update(this.puestox);
                 clearForm();
                 refreshGrid();
                 Notification.show("Puesto details stored.");
@@ -232,8 +232,8 @@ public class PuestoView extends Div implements BeforeEnterObserver {
     }
 
     private void populateForm(Puesto value) {
-        this.puesto = value;
-        binder.readBean(this.puesto);
+        this.puestox = value;
+        binder.readBean(this.puestox);
 
     }
 }

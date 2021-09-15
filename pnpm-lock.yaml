@@ -50,6 +50,7 @@ dependencies:
   '@vaadin/vaadin-upload': 21.0.1
   '@vaadin/vaadin-virtual-list': 21.0.1
   construct-style-sheets-polyfill: 2.4.16
+  line-awesome: 1.3.0
   lit: 2.0.0-rc.4
 devDependencies:
   '@types/validator': 13.1.0
@@ -191,7 +192,7 @@ packages:
     dependencies:
       '@babel/core': 7.15.5
       '@babel/helper-annotate-as-pure': 7.15.4
-      regexpu-core: 4.7.1
+      regexpu-core: 4.8.0
     dev: true
     engines:
       node: '>=6.9.0'
@@ -3206,7 +3207,7 @@ packages:
   /browserslist/3.2.8:
     dependencies:
       caniuse-lite: 1.0.30001257
-      electron-to-chromium: 1.3.836
+      electron-to-chromium: 1.3.839
     dev: true
     hasBin: true
     resolution:
@@ -3215,7 +3216,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001257
       colorette: 1.4.0
-      electron-to-chromium: 1.3.836
+      electron-to-chromium: 1.3.839
       escalade: 3.1.1
       node-releases: 1.1.75
     dev: true
@@ -3302,7 +3303,7 @@ packages:
       glob: 7.1.6
       infer-owner: 1.0.4
       lru-cache: 6.0.0
-      minipass: 3.1.3
+      minipass: 3.1.5
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -4046,10 +4047,10 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
-  /electron-to-chromium/1.3.836:
+  /electron-to-chromium/1.3.839:
     dev: true
     resolution:
-      integrity: sha512-Ney3pHOJBWkG/AqYjrW0hr2AUCsao+2uvq9HUlRP8OlpSdk/zOHOUJP7eu0icDvePC9DlgffuelP4TnOJmMRUg==
+      integrity: sha512-0O7uPs9LJNjQ/U5mW78qW8gXv9H6Ba3DHZ5/yt8aBsvomOWDkV3MddT7enUYvLQEUVOURjWmgJJWVZ3K98tIwQ==
   /elliptic/6.5.4:
     dependencies:
       bn.js: 4.12.0
@@ -4488,7 +4489,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==
-  /follow-redirects/1.14.3_debug@4.3.2:
+  /follow-redirects/1.14.4_debug@4.3.2:
     dependencies:
       debug: 4.3.2_supports-color@6.1.0
     dev: true
@@ -4500,7 +4501,7 @@ packages:
       debug:
         optional: true
     resolution:
-      integrity: sha512-3MkHxknWMUtb23apkgz/83fDoe+y+qr0TdgacGIA7bew+QLBo3vdgEN2xEsuXNivpFy4CyDhBBZnNZOtalmenw==
+      integrity: sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==
   /for-in/1.0.2:
     dev: true
     engines:
@@ -4567,7 +4568,7 @@ packages:
       integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==
   /fs-minipass/2.1.0:
     dependencies:
-      minipass: 3.1.3
+      minipass: 3.1.5
     dev: true
     engines:
       node: '>= 8'
@@ -4988,7 +4989,7 @@ packages:
   /http-proxy/1.18.1_debug@4.3.2:
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.3_debug@4.3.2
+      follow-redirects: 1.14.4_debug@4.3.2
       requires-port: 1.0.0
     dev: true
     engines:
@@ -5569,6 +5570,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
+  /line-awesome/1.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-Y0YHksL37ixDsHz+ihCwOtF5jwJgCDxQ3q+zOVgaSW8VugHGTsZZXMacPYZB1/JULBi6BAuTCTek+4ZY/UIwcw==
   /lines-and-columns/1.1.6:
     dev: true
     resolution:
@@ -5866,7 +5871,7 @@ packages:
       integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
   /minipass-collect/1.0.2:
     dependencies:
-      minipass: 3.1.3
+      minipass: 3.1.5
     dev: true
     engines:
       node: '>= 8'
@@ -5874,7 +5879,7 @@ packages:
       integrity: sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==
   /minipass-flush/1.0.5:
     dependencies:
-      minipass: 3.1.3
+      minipass: 3.1.5
     dev: true
     engines:
       node: '>= 8'
@@ -5882,23 +5887,23 @@ packages:
       integrity: sha512-JmQSYYpPUqX5Jyn1mXaRwOda1uQ8HP5KAT/oDSLCzt1BYRhQU0/hDtsB1ufZfEEzMZ9aAVmsBw8+FWsIXlClWw==
   /minipass-pipeline/1.2.4:
     dependencies:
-      minipass: 3.1.3
+      minipass: 3.1.5
     dev: true
     engines:
       node: '>=8'
     resolution:
       integrity: sha512-xuIq7cIOt09RPRJ19gdi4b+RiNvDFYe5JH+ggNvBqGqpQXcru3PcRmOZuHBKWK1Txf9+cQ+HMVN4d6z46LZP7A==
-  /minipass/3.1.3:
+  /minipass/3.1.5:
     dependencies:
       yallist: 4.0.0
     dev: true
     engines:
       node: '>=8'
     resolution:
-      integrity: sha512-Mgd2GdMVzY+x3IJ+oHnVM+KG3lA5c8tnabyJKmHSaG2kAGpudxuOf8ToDkhumF7UzME7DecbQE9uOZhNm7PuJg==
+      integrity: sha512-+8NzxD82XQoNKNrl1d/FSi+X8wAEWR+sbYAfIvub4Nz0d22plFG72CEVVaufV8PNf4qSslFTD8VMOxNVhHCjTw==
   /minizlib/2.1.2:
     dependencies:
-      minipass: 3.1.3
+      minipass: 3.1.5
       yallist: 4.0.0
     dev: true
     engines:
@@ -6698,14 +6703,14 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
-  /regenerate-unicode-properties/8.2.0:
+  /regenerate-unicode-properties/9.0.0:
     dependencies:
       regenerate: 1.4.2
     dev: true
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-F9DjY1vKLo/tPePDycuH3dn9H1OTPIkVD9Kz4LODu+F2C75mgjAJ7x/gwy6ZcSNRAAkhNlJSOHRe8k3p+K9WhA==
+      integrity: sha512-3E12UeNSPfjrgwjkR81m5J7Aw/T55Tu7nUyZVQYCKEOs+2dkxEY+DpPtZzO4YruuiPb7NkYLVcyJC4+zCbk5pA==
   /regenerate/1.4.2:
     dev: true
     resolution:
@@ -6758,19 +6763,19 @@ packages:
     dev: true
     resolution:
       integrity: sha1-SdA4g3uNz4v6W5pCE5k45uoq4kA=
-  /regexpu-core/4.7.1:
+  /regexpu-core/4.8.0:
     dependencies:
       regenerate: 1.4.2
-      regenerate-unicode-properties: 8.2.0
+      regenerate-unicode-properties: 9.0.0
       regjsgen: 0.5.2
-      regjsparser: 0.6.9
-      unicode-match-property-ecmascript: 1.0.4
-      unicode-match-property-value-ecmascript: 1.2.0
+      regjsparser: 0.7.0
+      unicode-match-property-ecmascript: 2.0.0
+      unicode-match-property-value-ecmascript: 2.0.0
     dev: true
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-ywH2VUraA44DZQuRKzARmw6S66mr48pQVva4LBeRhcOltJ6hExvWly5ZjFLYo67xbIxb6W1q4bAGtgfEl20zfQ==
+      integrity: sha512-1F6bYsoYiz6is+oz70NWur2Vlh9KWtswuRuzJOfeYUrfPX2o8n74AnUVaOGDbUqVGO9fNHu48/pjJO4sNVwsOg==
   /regjsgen/0.2.0:
     dev: true
     resolution:
@@ -6786,13 +6791,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-fuj4Tcb6eS0/0K4ijSS9lJ6tIFw=
-  /regjsparser/0.6.9:
+  /regjsparser/0.7.0:
     dependencies:
       jsesc: 0.5.0
     dev: true
     hasBin: true
     resolution:
-      integrity: sha512-ZqbNRz1SNjLAiYuwY0zoXW8Ne675IX5q+YHioAGbCw4X96Mjl2+dcX9B2ciaeyYjViDAfvIjFpQjJgLttTEERQ==
+      integrity: sha512-A4pcaORqmNMDVwUjWoTzuhwMGpP+NykpfqAsEgI1FSH/EzC7lrN5TMd+kN8YCovX+jMpu8eaqXgXPCa0g8FQNQ==
   /relateurl/0.2.7:
     dev: true
     engines:
@@ -6929,7 +6934,7 @@ packages:
       jest-worker: 26.6.2
       rollup: 2.56.3
       serialize-javascript: 4.0.0
-      terser: 5.7.2
+      terser: 5.8.0
     dev: true
     peerDependencies:
       rollup: ^2.0.0
@@ -7325,7 +7330,7 @@ packages:
       integrity: sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   /ssri/8.0.1:
     dependencies:
-      minipass: 3.1.3
+      minipass: 3.1.5
     dev: true
     engines:
       node: '>= 8'
@@ -7494,7 +7499,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 3.1.3
+      minipass: 3.1.5
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
@@ -7550,7 +7555,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==
-  /terser/5.7.2:
+  /terser/5.8.0:
     dependencies:
       commander: 2.20.3
       source-map: 0.7.3
@@ -7560,7 +7565,7 @@ packages:
       node: '>=10'
     hasBin: true
     resolution:
-      integrity: sha512-0Omye+RD4X7X69O0eql3lC4Heh/5iLj3ggxR/B5ketZLOtLiOqukUgjw3q4PDnNQbsrkKr3UMypqStQG3XKRvw==
+      integrity: sha512-f0JH+6yMpneYcRJN314lZrSwu9eKkUFEHLN/kNy8ceh8gaRiLgFPJqrB9HsXjhEGdv4e/ekjTOFxIlL6xlma8A==
   /through2/2.0.5:
     dependencies:
       readable-stream: 2.3.7
@@ -7710,33 +7715,33 @@ packages:
     dev: true
     resolution:
       integrity: sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw==
-  /unicode-canonical-property-names-ecmascript/1.0.4:
+  /unicode-canonical-property-names-ecmascript/2.0.0:
     dev: true
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-jDrNnXWHd4oHiTZnx/ZG7gtUTVp+gCcTTKr8L0HjlwphROEW3+Him+IpvC+xcJEFegapiMZyZe02CyuOnRmbnQ==
-  /unicode-match-property-ecmascript/1.0.4:
+      integrity: sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==
+  /unicode-match-property-ecmascript/2.0.0:
     dependencies:
-      unicode-canonical-property-names-ecmascript: 1.0.4
-      unicode-property-aliases-ecmascript: 1.1.0
+      unicode-canonical-property-names-ecmascript: 2.0.0
+      unicode-property-aliases-ecmascript: 2.0.0
     dev: true
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-L4Qoh15vTfntsn4P1zqnHulG0LdXgjSO035fEpdtp6YxXhMT51Q6vgM5lYdG/5X3MjS+k/Y9Xw4SFCY9IkR0rg==
-  /unicode-match-property-value-ecmascript/1.2.0:
+      integrity: sha512-5kaZCrbp5mmbz5ulBkDkbY0SsPOjKqVS35VpL9ulMPfSl0J0Xsm+9Evphv9CoIZFwre7aJoa94AY6seMKGVN5Q==
+  /unicode-match-property-value-ecmascript/2.0.0:
     dev: true
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-wjuQHGQVofmSJv1uVISKLE5zO2rNGzM/KCYZch/QQvez7C1hUhBIuZ701fYXExuufJFMPhv2SyL8CyoIfMLbIQ==
-  /unicode-property-aliases-ecmascript/1.1.0:
+      integrity: sha512-7Yhkc0Ye+t4PNYzOGKedDhXbYIBe1XEQYQxOPyhcXNMJ0WCABqqj6ckydd6pWRZTHV4GuCPKdBAUiMc60tsKVw==
+  /unicode-property-aliases-ecmascript/2.0.0:
     dev: true
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-PqSoPh/pWetQ2phoj5RLiaqIk4kCNwoV3CI+LfGmWLKI3rE3kl1h59XpX2BjgDrmbxD9ARtQobPGU1SguCYuQg==
+      integrity: sha512-5Zfuy9q/DFr4tfO7ZPeVXb1aPoeQSdeFMLpYuFebehDAhbuevLs5yxSZmIFN1tP5F9Wl4IpJrYojg85/zgyZHQ==
   /union-value/1.0.1:
     dependencies:
       arr-union: 3.1.0
@@ -8445,6 +8450,7 @@ specifiers:
   fork-ts-checker-webpack-plugin: 6.2.1
   glob: 7.1.6
   html-webpack-plugin: 4.5.1
+  line-awesome: 1.3.0
   lit: 2.0.0-rc.4
   lit-css-loader: 0.1.0
   loader-utils: 2.0.0
