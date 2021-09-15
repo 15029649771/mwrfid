@@ -2,7 +2,7 @@ package com.mwrfid.security;
 
 import java.util.Optional;
 
-import com.mwrfid.data.entity.User;
+import com.mwrfid.data.entity.Users;
 import com.mwrfid.data.service.UserRepository;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinServletRequest;
@@ -30,7 +30,7 @@ public class AuthenticatedUser {
         return null;
     }
 
-    public Optional<User> get() {
+    public Optional<Users> get() {
         UserDetails details = getAuthenticatedUser();
         if (details == null) {
             return Optional.empty();

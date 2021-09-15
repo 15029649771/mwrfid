@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Dispositivo extends AbstractEntity {
 
-    private String dispositivo;
+    private String dispositivo_desc;
     private Integer idmodelodispositivo;
     private Integer cantidad_puertos;
     private String observaciones;
@@ -18,10 +18,10 @@ public class Dispositivo extends AbstractEntity {
     private LocalDateTime fechaact;
 
     public String getDispositivo() {
-        return dispositivo;
+        return dispositivo_desc;
     }
     public void setDispositivo(String dispositivo) {
-        this.dispositivo = dispositivo;
+        this.dispositivo_desc = dispositivo;
     }
     public Integer getIdmodelodispositivo() {
         return idmodelodispositivo;

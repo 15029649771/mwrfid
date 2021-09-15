@@ -11,7 +11,7 @@ import com.mwrfid.data.Role;
 import javax.persistence.Lob;
 
 @Entity
-public class User extends AbstractEntity {
+public class Users extends AbstractEntity {
 
     private String username;
     private String name;

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Puesto extends AbstractEntity {
 
-    private String puesto;
+    private String puesto_desc;
     private Integer iddispositivo;
     private Integer puerto;
     private String observaciones;
@@ -21,10 +21,10 @@ public class Puesto extends AbstractEntity {
     private Integer idpredio;
 
     public String getPuesto() {
-        return puesto;
+        return puesto_desc;
     }
     public void setPuesto(String puesto) {
-        this.puesto = puesto;
+        this.puesto_desc = puesto;
     }
     public Integer getIddispositivo() {
         return iddispositivo;

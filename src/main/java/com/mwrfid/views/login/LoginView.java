@@ -24,14 +24,37 @@ public class LoginView extends LoginOverlay {
         setAction("login");
 
         LoginI18n i18n = LoginI18n.createDefault();
-        i18n.setHeader(new LoginI18n.Header());
-        i18n.getHeader().setTitle("Middleware RFID");
-        i18n.getHeader().setDescription("Login using user/user or admin/admin");
-        i18n.setAdditionalInformation(null);
-        setI18n(i18n);
 
+        i18n.setHeader(new LoginI18n.Header());
+        i18n.getHeader().setTitle("Middleware Trazabilidad Backend");
+        i18n.getHeader().setDescription("Bienvenido");
+        i18n.setAdditionalInformation(null);
+
+        setI18n(i18n);
+        setI18n(createSpanishI18n());
         setForgotPasswordButtonVisible(false);
         setOpened(true);
     }
+
+    private LoginI18n createSpanishI18n() {
+        final LoginI18n i18n = LoginI18n.createDefault();
+
+        i18n.setHeader(new LoginI18n.Header());
+        i18n.getHeader().setTitle("Middleware Trazabilidad Backend");
+        i18n.getHeader().setDescription("Middleware Trazabilidad");
+        i18n.getForm().setUsername("Usuario");
+        i18n.getForm().setTitle("Acceda a su cuenta");
+        i18n.getForm().setSubmit("Ingresar");
+        i18n.getForm().setPassword("Clave");
+        i18n.getForm().setForgotPassword("Olvide mi contraseña");
+        i18n.getErrorMessage().setTitle("Usuario / Contraseña invalidos");
+        i18n.getErrorMessage()
+                .setMessage("Ingrese usuario y clave e intente nuevamente");
+        i18n.setAdditionalInformation(
+                "Version 1.0 - Playa Giron ");
+        return i18n;
+    }
+
+
 
 }

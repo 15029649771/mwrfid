@@ -3,7 +3,7 @@ package com.mwrfid.security;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.mwrfid.data.entity.User;
+import com.mwrfid.data.entity.Users;
 import com.mwrfid.data.service.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        Users user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("No user present with username: " + username);
         } else {
@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
     }
 
-    private static List<GrantedAuthority> getAuthorities(User user) {
+    private static List<GrantedAuthority> getAuthorities(Users user) {
         return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
                 .collect(Collectors.toList());
 

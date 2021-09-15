@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Predio extends AbstractEntity {
 
-    private String predio;
+    private String predio_desc;
     private String domicilio;
     private String observaciones;
     private Integer latitud;
@@ -19,10 +19,10 @@ public class Predio extends AbstractEntity {
     private LocalDateTime fechaact;
 
     public String getPredio() {
-        return predio;
+        return predio_desc;
     }
     public void setPredio(String predio) {
-        this.predio = predio;
+        this.predio_desc = predio;
     }
     public String getDomicilio() {
         return domicilio;

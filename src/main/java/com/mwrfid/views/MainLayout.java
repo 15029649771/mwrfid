@@ -5,12 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.ComponentUtil;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.Footer;
@@ -18,25 +15,16 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Header;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
-import com.vaadin.flow.component.tabs.Tabs;
-import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
-import com.mwrfid.views.MainLayout;
 import com.mwrfid.views.acercade.AcercadeView;
 import com.mwrfid.views.modelodispositivo.ModeloDispositivoView;
 import com.mwrfid.views.dispositivo.DispositivoView;
 import com.mwrfid.views.predio.PredioView;
 import com.mwrfid.views.puesto.PuestoView;
 import com.mwrfid.views.tipodispositivo.TipoDispositivoView;
-import com.mwrfid.views.login.LoginView;
 import com.vaadin.flow.component.avatar.Avatar;
-import com.mwrfid.data.entity.User;
+import com.mwrfid.data.entity.Users;
 import com.mwrfid.security.AuthenticatedUser;
 import com.vaadin.flow.server.auth.AccessAnnotationChecker;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
@@ -130,17 +118,18 @@ public class MainLayout extends AppLayout {
 
     private List<RouterLink> createLinks() {
         MenuItemInfo[] menuItems = new MenuItemInfo[]{ //
-                new MenuItemInfo("Acerca de:", "la la-file", AcercadeView.class), //
 
+                new MenuItemInfo("Tipo Dispositivo", "la la-cog", TipoDispositivoView.class), //
                 new MenuItemInfo("Modelo Dispositivo", "lab la-confluence", ModeloDispositivoView.class), //
-
                 new MenuItemInfo("Dispositivo", "lab la-cloudsmith", DispositivoView.class), //
 
                 new MenuItemInfo("Predio", "la la-cube", PredioView.class), //
 
                 new MenuItemInfo("Puesto", "la la-cogs", PuestoView.class), //
 
-                new MenuItemInfo("Tipo Dispositivo", "la la-cog", TipoDispositivoView.class), //
+
+
+                new MenuItemInfo("Acerca de:", "la la-file", AcercadeView.class), //
 
         };
         List<RouterLink> links = new ArrayList<>();
@@ -175,9 +164,9 @@ public class MainLayout extends AppLayout {
         Footer layout = new Footer();
         layout.addClassNames("flex", "items-center", "my-s", "px-m", "py-xs");
 
-        Optional<User> maybeUser = authenticatedUser.get();
+        Optional<Users> maybeUser = authenticatedUser.get();
         if (maybeUser.isPresent()) {
-            User user = maybeUser.get();
+            Users user = maybeUser.get();
 
             Avatar avatar = new Avatar(user.getName(), user.getProfilePictureUrl());
             avatar.addClassNames("me-xs");
