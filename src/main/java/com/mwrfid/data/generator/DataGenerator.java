@@ -131,8 +131,8 @@ public class DataGenerator {
             logger.info("... generating 100 Tipo Dispositivo entities...");
             ExampleDataGenerator<TipoDispositivo> tipoDispositivoRepositoryGenerator = new ExampleDataGenerator<>(
                     TipoDispositivo.class, LocalDateTime.of(2021, 9, 15, 0, 0, 0));
-            tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setId, DataType.ID);
-            tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setId, DataType.NUMBER_UP_TO_100);
+           // tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setId, DataType.ID);
+           // tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setId, DataType.NUMBER_UP_TO_100);
             tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setTipodispositivo, DataType.WORD);
             tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setLectura, DataType.BOOLEAN_50_50);
             tipoDispositivoRepositoryGenerator.setData(TipoDispositivo::setEscritura, DataType.BOOLEAN_50_50);
