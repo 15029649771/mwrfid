@@ -1,15 +1,26 @@
 package com.mwrfid.data.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 import com.mwrfid.data.AbstractEntity;
 import java.time.LocalDateTime;
 
 @Entity
-public class Dispositivo extends AbstractEntity {
+public class Dispositivo
+//        extends AbstractEntity
+{
 
-    private String dispositivo_desc;
-    private Integer idmodelodispositivo;
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    private String dispositivo;
+    //private Integer idmodelodispositivo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idmodelodispositivo")
+    private ModeloDispositivo idmodelodispositivo;
+
     private Integer cantidad_puertos;
     private String observaciones;
     private String usuarioalt;
@@ -18,17 +29,17 @@ public class Dispositivo extends AbstractEntity {
     private LocalDateTime fechaact;
 
     public String getDispositivo() {
-        return dispositivo_desc;
+        return dispositivo;
     }
     public void setDispositivo(String dispositivo) {
-        this.dispositivo_desc = dispositivo;
+        this.dispositivo = dispositivo;
     }
-    public Integer getIdmodelodispositivo() {
-        return idmodelodispositivo;
-    }
-    public void setIdmodelodispositivo(Integer idmodelodispositivo) {
-        this.idmodelodispositivo = idmodelodispositivo;
-    }
+    //public Integer getIdmodelodispositivo() {
+     //   return idmodelodispositivo;
+    //}
+    //public void setIdmodelodispositivo(Integer idmodelodispositivo) {
+      //  this.idmodelodispositivo = idmodelodispositivo;
+    //}
     public Integer getCantidad_puertos() {
         return cantidad_puertos;
     }
@@ -66,4 +77,19 @@ public class Dispositivo extends AbstractEntity {
         this.fechaact = fechaact;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public ModeloDispositivo getIdmodelodispositivo() {
+        return idmodelodispositivo;
+    }
+
+    public void setIdmodelodispositivo(ModeloDispositivo idmodelodispositivo) {
+        this.idmodelodispositivo = idmodelodispositivo;
+    }
 }

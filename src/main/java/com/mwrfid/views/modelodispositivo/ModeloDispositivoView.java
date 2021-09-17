@@ -1,12 +1,15 @@
 package com.mwrfid.views.modelodispositivo;
 
 import com.mwrfid.data.entity.ModeloDispositivo;
+import com.mwrfid.data.entity.TipoDispositivo;
 import com.mwrfid.data.service.ModeloDispositivoService;
+import com.mwrfid.data.service.TipoDispositivoRepository;
 import com.mwrfid.views.MainLayout;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -30,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.security.PermitAll;
+import java.util.List;
 import java.util.Optional;
 
 @PageTitle("Modelo Dispositivo")
@@ -38,7 +42,8 @@ import java.util.Optional;
 @Uses(Icon.class)
 @Uses(Icon.class)
 public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
-
+    @Autowired
+    TipoDispositivoRepository tr;
 
     private final String MODELODISPOSITIVO_ID = "modeloDispositivoID";
     private final String MODELODISPOSITIVO_EDIT_ROUTE_TEMPLATE = "modelodispositivo/%d/edit";
@@ -47,6 +52,8 @@ public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
 
     private TextField id;
     private TextField modelodispositivo;
+    private ComboBox<TipoDispositivo> idtipodispositivo;
+    private TextField path_drivers;
 
     private TextField txtFiltro;
     private Button btnFiltro;
@@ -81,6 +88,7 @@ public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
         // Configure Grid
         grid.addColumn("id").setAutoWidth(true);
         grid.addColumn("modelodispositivo").setAutoWidth(true);
+        grid.addColumn("path_drivers").setAutoWidth(true);
 
         grid.setItems(query -> modeloDispositivoService.list(
                         PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
@@ -225,8 +233,10 @@ public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
         id = new TextField("Id");
         id.setReadOnly(true);
         modelodispositivo = new TextField("Modelo de Dispositivo");
+        idtipodispositivo = new ComboBox("Tipo de Dispositivo");
+        path_drivers = new TextField("Path Drivers");
 
-        Component[] fields = new Component[]{id, modelodispositivo};
+        Component[] fields = new Component[]{id, modelodispositivo,  idtipodispositivo,  path_drivers};
 
         for (Component field : fields) {
             ((HasStyle) field).addClassName("full-width");
@@ -276,6 +286,11 @@ public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
 
     private void populateForm(ModeloDispositivo value) {
         this.modeloDispositivo = value;
+        //Tipos de Dispositivo
+        List<TipoDispositivo> mList = tr.findAll();
+        idtipodispositivo.setItems(mList);
+        idtipodispositivo.setItemLabelGenerator(TipoDispositivo::getTipodispositivo);
+        //
         binder.readBean(this.modeloDispositivo);
 
     }
