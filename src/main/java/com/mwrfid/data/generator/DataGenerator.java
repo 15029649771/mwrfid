@@ -68,8 +68,8 @@ public class DataGenerator {
             modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setId, DataType.ID);
             modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setId, DataType.NUMBER_UP_TO_100);
             modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setModelodispositivo, DataType.WORD);
-            modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setIdtipodispositivo,
-                    DataType.NUMBER_UP_TO_100);
+            //modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setIdtipodispositivo,
+            //        DataType.NUMBER_UP_TO_100);
             modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setPath_drivers, DataType.WORD);
             modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setUsuarioalt, DataType.WORD);
             modeloDispositivoRepositoryGenerator.setData(ModeloDispositivo::setUsuarioact, DataType.WORD);
