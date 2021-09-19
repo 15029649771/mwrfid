@@ -88,6 +88,7 @@ public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
         // Configure Grid
         grid.addColumn("id").setAutoWidth(true);
         grid.addColumn("modelodispositivo").setAutoWidth(true);
+        grid.addColumn(this::FKTipoDispositivo).setHeader("Tipo Dispositivo").setAutoWidth(true).setSortable(true);
         grid.addColumn("path_drivers").setAutoWidth(true);
 
         grid.setItems(query -> modeloDispositivoService.list(
@@ -294,5 +295,13 @@ public class ModeloDispositivoView extends Div implements BeforeEnterObserver {
         binder.readBean(this.modeloDispositivo);
 
     }
+
+    // constraints
+    private String FKTipoDispositivo(ModeloDispositivo ob) {
+        String salida ="";
+        if (ob.getIdtipodispositivo()!=null) salida= ob.getIdtipodispositivo().getTipodispositivo();
+        return salida;
+    }
+
 
 }

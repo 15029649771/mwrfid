@@ -40,7 +40,7 @@ public class LoginView extends LoginOverlay {
         final LoginI18n i18n = LoginI18n.createDefault();
 
         i18n.setHeader(new LoginI18n.Header());
-        i18n.getHeader().setTitle("Middleware Trazabilidad Backend");
+        i18n.getHeader().setTitle("Middleware Trazabilidad BackOffice");
         i18n.getHeader().setDescription("Middleware Trazabilidad");
         i18n.getForm().setUsername("Usuario");
         i18n.getForm().setTitle("Acceda a su cuenta");

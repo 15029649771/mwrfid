@@ -1,14 +1,27 @@
 package com.mwrfid.data.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.mwrfid.data.AbstractEntity;
 import java.time.LocalDateTime;
 
 @Entity
-public class Predio extends AbstractEntity {
+public class Predio
+               // extends AbstractEntity
+{
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-    private String predio_desc;
+    @NotNull(message = "No se puede dejar el campo vacio")
+    @NotEmpty(message = "El campo no puede quedar vacio")
+    @Column(name = "predio", nullable = false, unique = true, length = 100)
+    private String predio;
     private String domicilio;
     private String observaciones;
     private Integer latitud;
@@ -19,10 +32,10 @@ public class Predio extends AbstractEntity {
     private LocalDateTime fechaact;
 
     public String getPredio() {
-        return predio_desc;
+        return predio;
     }
     public void setPredio(String predio) {
-        this.predio_desc = predio;
+        this.predio = predio;
     }
     public String getDomicilio() {
         return domicilio;
@@ -73,4 +86,11 @@ public class Predio extends AbstractEntity {
         this.fechaact = fechaact;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
