@@ -147,10 +147,8 @@ public class TipoDispositivoView extends Div implements BeforeEnterObserver {
 
         guardar.addClickListener(e -> {
             try {
-                AuthenticatedUser au = new AuthenticatedUser();
-
                 LocalDateTime now = LocalDateTime.now();
-                String usuario=   VaadinSession.getCurrent().getAttribute("usuario").toString();
+                String usuario=   VaadinSession.getCurrent().getAttribute("username").toString();
                 if (this.tipoDispositivo == null) {
                     this.tipoDispositivo = new TipoDispositivo();
                     this.tipoDispositivo.setUsuarioalt(usuario);
@@ -360,17 +358,10 @@ public class TipoDispositivoView extends Div implements BeforeEnterObserver {
             dialog.add(fm);
 
 
-            dialog.setWidth("300px");
+            dialog.setWidth("250px");
             dialog.setHeight("400px");
             dialog.open();
-           // button.addClickListener(event -> dialog.open());
 
-
-
-            // ListDataProvider<TipoDispositivo> dataProvider = (ListDataProvider<TipoDispositivo>) grid
-            //        .getDataProvider();
-            //dataProvider.getItems().remove(item);
-            //dataProvider.refreshAll();
         });
         return button;
     }

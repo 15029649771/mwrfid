@@ -28,6 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("No user present with username: " + username);
         } else {
 
+            //VaadinSession.getCurrent().setAttribute("username", username);
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getHashedPassword(),
                     getAuthorities(user));
         }

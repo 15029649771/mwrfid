@@ -7,6 +7,7 @@ import com.mwrfid.data.service.UserRepository;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinServletRequest;
 
+import com.vaadin.flow.server.VaadinSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,6 +36,7 @@ public class AuthenticatedUser {
         if (details == null) {
             return Optional.empty();
         }
+        VaadinSession.getCurrent().setAttribute("username", details.getUsername());
         return Optional.of(userRepository.findByUsername(details.getUsername()));
     }
 
