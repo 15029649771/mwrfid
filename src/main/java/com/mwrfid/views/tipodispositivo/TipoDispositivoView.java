@@ -1,7 +1,10 @@
 package com.mwrfid.views.tipodispositivo;
 
 import com.mwrfid.data.entity.TipoDispositivo;
+import com.mwrfid.data.entity.Users;
 import com.mwrfid.data.service.TipoDispositivoService;
+import com.mwrfid.security.AuthenticatedUser;
+import com.mwrfid.security.UserDetailsServiceImpl;
 import com.mwrfid.views.MainLayout;
 
 
@@ -16,23 +19,30 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.converter.StringToIntegerConverter;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.annotation.security.PermitAll;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @PageTitle("Tipo Dispositivo")
@@ -85,7 +95,21 @@ public class TipoDispositivoView extends Div implements BeforeEnterObserver {
 
         // Configure Grid
         grid.addColumn("id").setAutoWidth(true);
-        grid.addColumn("tipodispositivo").setAutoWidth(true);
+        grid.addColumn("tipodispositivo").setAutoWidth(true).setHeader("Tipo Dispositivo");
+
+        TemplateRenderer<TipoDispositivo> lecturaRenderer = TemplateRenderer.<TipoDispositivo>of(
+                        "<vaadin-icon hidden='[[!item.lectura]]' icon='vaadin:check' style='width: var(--lumo-icon-size-s); height: var(--lumo-icon-size-s); color: var(--lumo-primary-text-color);'></vaadin-icon><vaadin-icon hidden='[[item.lectura]]' icon='vaadin:minus' style='width: var(--lumo-icon-size-s); height: var(--lumo-icon-size-s); color: var(--lumo-disabled-text-color);'></vaadin-icon>")
+                .withProperty("lectura", TipoDispositivo::isLectura);
+        grid.addColumn(lecturaRenderer).setHeader("Lectura").setAutoWidth(true);
+
+        TemplateRenderer<TipoDispositivo> escrituraRenderer = TemplateRenderer.<TipoDispositivo>of(
+                        "<vaadin-icon hidden='[[!item.escritura]]' icon='vaadin:check' style='width: var(--lumo-icon-size-s); height: var(--lumo-icon-size-s); color: var(--lumo-primary-text-color);'></vaadin-icon><vaadin-icon hidden='[[item.escritura]]' icon='vaadin:minus' style='width: var(--lumo-icon-size-s); height: var(--lumo-icon-size-s); color: var(--lumo-disabled-text-color);'></vaadin-icon>")
+                .withProperty("escritura", TipoDispositivo::isEscritura);
+        grid.addColumn(escrituraRenderer).setHeader("Escritura").setAutoWidth(true);
+
+        grid.addComponentColumn(item -> auditButton(grid, item))
+                .setHeader("Auditar");
+
 
         grid.setItems(query -> tipoDispositivoService.list(
                         PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
@@ -123,10 +147,21 @@ public class TipoDispositivoView extends Div implements BeforeEnterObserver {
 
         guardar.addClickListener(e -> {
             try {
+                AuthenticatedUser au = new AuthenticatedUser();
+
+                LocalDateTime now = LocalDateTime.now();
+                String usuario=   VaadinSession.getCurrent().getAttribute("usuario").toString();
                 if (this.tipoDispositivo == null) {
                     this.tipoDispositivo = new TipoDispositivo();
+                    this.tipoDispositivo.setUsuarioalt(usuario);
+                    this.tipoDispositivo.setFechaalt(now);
+                } else {
+                    this.tipoDispositivo.setFechaact(now);
+                    this.tipoDispositivo.setUsuarioact(usuario);
                 }
+
                 binder.writeBean(this.tipoDispositivo);
+
 
                 tipoDispositivoService.update(this.tipoDispositivo);
                 clearForm();
@@ -230,8 +265,13 @@ public class TipoDispositivoView extends Div implements BeforeEnterObserver {
         id = new TextField("Id");
         id.setReadOnly(true);
         tipodispositivo = new TextField("Tipo de Dispositivo");
+        lectura = new Checkbox("Lectura");
+        lectura.getStyle().set("padding-top", "var(--lumo-space-m)");
+        escritura = new Checkbox("Escritura");
+        escritura.getStyle().set("padding-top", "var(--lumo-space-m)");
 
-        Component[] fields = new Component[]{id, tipodispositivo};
+
+        Component[] fields = new Component[]{id, tipodispositivo, lectura,escritura};
 
         for (Component field : fields) {
             ((HasStyle) field).addClassName("full-width");
@@ -284,5 +324,56 @@ public class TipoDispositivoView extends Div implements BeforeEnterObserver {
         binder.readBean(this.tipoDispositivo);
 
     }
+
+
+    private Button auditButton(Grid<TipoDispositivo> grid, TipoDispositivo item) {
+        @SuppressWarnings("unchecked")
+        Button button = new Button("Auditar", clickEvent -> {
+            VerticalLayout fm = new VerticalLayout();
+            Dialog dialog = new Dialog();
+
+            String usuarioalt="";
+            if (item.getUsuarioalt()==null)  usuarioalt+="No Registrado "; else usuarioalt+=item.getUsuarioalt();
+            TextField spUsuarioalt= new TextField("Usuario Alta: ");
+            spUsuarioalt.setValue(usuarioalt);
+            spUsuarioalt.setReadOnly(true);
+
+            String usuarioact="";
+            if (item.getUsuarioact()==null)  usuarioact+="No Registrado "; else usuarioact+=item.getUsuarioact();
+            TextField spUsuarioact= new TextField("Usuario Actualizacion: ");
+            spUsuarioact.setValue(usuarioact);
+            spUsuarioact.setReadOnly(true);
+
+            String fechaalt="";
+            if (item.getFechaalt()==null)  fechaalt+="No Registrada "; else fechaalt+=item.getFechaalt();
+            TextField spFechaalt = new TextField("Fecha de Alta: ");
+            spFechaalt.setValue(fechaalt);
+            spFechaalt.setReadOnly(true);
+
+            String fechaact="";
+            if (item.getFechaact()==null)  fechaact+="No Registrada "; else fechaact+=item.getFechaact();
+            TextField spFechaact = new TextField("Fecha Ultima Actualizacion: ");
+            spFechaact.setValue(fechaact);
+            spFechaact.setReadOnly(true);
+
+            fm.add(spUsuarioalt, spUsuarioact, spFechaalt, spFechaact);
+            dialog.add(fm);
+
+
+            dialog.setWidth("300px");
+            dialog.setHeight("400px");
+            dialog.open();
+           // button.addClickListener(event -> dialog.open());
+
+
+
+            // ListDataProvider<TipoDispositivo> dataProvider = (ListDataProvider<TipoDispositivo>) grid
+            //        .getDataProvider();
+            //dataProvider.getItems().remove(item);
+            //dataProvider.refreshAll();
+        });
+        return button;
+    }
+
 
 }

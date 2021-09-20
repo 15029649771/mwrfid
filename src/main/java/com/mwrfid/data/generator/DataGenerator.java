@@ -116,7 +116,7 @@ public class DataGenerator {
             puestoRepositoryGenerator.setData(Puesto::setId, DataType.ID);
             puestoRepositoryGenerator.setData(Puesto::setId, DataType.NUMBER_UP_TO_100);
             puestoRepositoryGenerator.setData(Puesto::setPuesto, DataType.WORD);
-            puestoRepositoryGenerator.setData(Puesto::setIddispositivo, DataType.NUMBER_UP_TO_100);
+            //puestoRepositoryGenerator.setData(Puesto::setIddispositivo, DataType.NUMBER_UP_TO_100);
             puestoRepositoryGenerator.setData(Puesto::setPuerto, DataType.NUMBER_UP_TO_100);
             puestoRepositoryGenerator.setData(Puesto::setObservaciones, DataType.WORD);
             puestoRepositoryGenerator.setData(Puesto::setLatitud, DataType.NUMBER_UP_TO_100);

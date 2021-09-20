@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.mwrfid.data.entity.Users;
 import com.mwrfid.data.service.UserRepository;
 
+import com.vaadin.flow.server.VaadinSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user present with username: " + username);
         } else {
+
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getHashedPassword(),
                     getAuthorities(user));
         }

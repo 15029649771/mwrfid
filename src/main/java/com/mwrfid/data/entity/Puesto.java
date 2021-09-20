@@ -1,19 +1,38 @@
 package com.mwrfid.data.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.mwrfid.data.AbstractEntity;
 import java.time.LocalDateTime;
 
 @Entity
-public class Puesto extends AbstractEntity {
+public class Puesto
+       // extends AbstractEntity
+{
 
-    private String puesto_desc;
-    private Integer iddispositivo;
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+
+    @NotNull(message = "No se puede dejar el campo vacio")
+    @NotEmpty(message = "El campo no puede quedar vacio")
+    @Column(name = "puesto", nullable = false, unique = true, length = 100)
+    private String puesto;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "iddispositivo")
+    private Dispositivo iddispositivo;
+
+
+    // ver si van o no null
     private Integer puerto;
     private String observaciones;
     private Integer latitud;
     private Integer longitud;
+
     private String usuarioalt;
     private String usuarioact;
     private LocalDateTime fechaalt;
@@ -21,17 +40,18 @@ public class Puesto extends AbstractEntity {
     private Integer idpredio;
 
     public String getPuesto() {
-        return puesto_desc;
+        return puesto;
     }
     public void setPuesto(String puesto) {
-        this.puesto_desc = puesto;
+        this.puesto = puesto;
     }
-    public Integer getIddispositivo() {
-        return iddispositivo;
-    }
-    public void setIddispositivo(Integer iddispositivo) {
-        this.iddispositivo = iddispositivo;
-    }
+
+    //public Integer getIddispositivo() {
+    //    return iddispositivo;
+    //}
+    //public void setIddispositivo(Integer iddispositivo) {
+    //    this.iddispositivo = iddispositivo;
+   // }
     public Integer getPuerto() {
         return puerto;
     }
@@ -87,4 +107,19 @@ public class Puesto extends AbstractEntity {
         this.idpredio = idpredio;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Dispositivo getIddispositivo() {
+        return iddispositivo;
+    }
+
+    public void setIddispositivo(Dispositivo iddispositivo) {
+        this.iddispositivo = iddispositivo;
+    }
 }
