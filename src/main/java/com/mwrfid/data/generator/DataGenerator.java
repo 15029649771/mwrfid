@@ -125,7 +125,7 @@ public class DataGenerator {
             puestoRepositoryGenerator.setData(Puesto::setUsuarioact, DataType.WORD);
             puestoRepositoryGenerator.setData(Puesto::setFechaalt, DataType.DATETIME_LAST_10_YEARS);
             puestoRepositoryGenerator.setData(Puesto::setFechaact, DataType.DATETIME_LAST_10_YEARS);
-            puestoRepositoryGenerator.setData(Puesto::setIdpredio, DataType.NUMBER_UP_TO_100);
+           // puestoRepositoryGenerator.setData(Puesto::setIdpredio, DataType.NUMBER_UP_TO_100);
             puestoRepository.saveAll(puestoRepositoryGenerator.create(100, seed));
 
             logger.info("... generating 100 Tipo Dispositivo entities...");

@@ -37,7 +37,12 @@ public class Puesto
     private String usuarioact;
     private LocalDateTime fechaalt;
     private LocalDateTime fechaact;
-    private Integer idpredio;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idpredio")
+    private Predio idpredio;
+
+
 
     public String getPuesto() {
         return puesto;
@@ -100,12 +105,7 @@ public class Puesto
     public void setFechaact(LocalDateTime fechaact) {
         this.fechaact = fechaact;
     }
-    public Integer getIdpredio() {
-        return idpredio;
-    }
-    public void setIdpredio(Integer idpredio) {
-        this.idpredio = idpredio;
-    }
+
 
     public Integer getId() {
         return id;
@@ -121,5 +121,13 @@ public class Puesto
 
     public void setIddispositivo(Dispositivo iddispositivo) {
         this.iddispositivo = iddispositivo;
+    }
+
+    public Predio getIdpredio() {
+        return idpredio;
+    }
+
+    public void setIdpredio(Predio idpredio) {
+        this.idpredio = idpredio;
     }
 }

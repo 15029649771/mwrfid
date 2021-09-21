@@ -21,8 +21,8 @@ public class AcercadeView extends VerticalLayout {
         img.setWidth("200px");
         add(img);
 
-        add(new H2("This place intentionally left empty"));
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        add(new H2("Middleware de Trazabilidad RFID Version 1.0"));
+        add(new Paragraph("Desarrollado por:--- 🤗"));
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
